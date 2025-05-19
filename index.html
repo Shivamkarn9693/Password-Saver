@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Saver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">🔐 Password Saver</div>
+    <ul>
+      <li>Home</li>
+      <li>Features</li>
+      <li>Contact</li>
+    </ul>
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="themeSwitch" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Password Saver</h1>
+    <p class="subtext">Securely store, manage, and copy your credentials with ease using Password Saver.</p>
+
+    <div id="alert">Copied to clipboard!</div>
+
+    <section class="password-table">
+      <h2>Saved Entries</h2>
+      <table id="passwords-table">
+        <tr>
+          <th>Website</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </section>
+
+    <section class="add-password">
+      <h2>Add a New Entry</h2>
+      <form id="password-form">
+        <input type="text" id="website" name="website" placeholder="Website" required />
+        <input type="text" id="username" name="username" placeholder="Username" required />
+        <input type="password" id="password" name="password" placeholder="Password" required />
+        <button class="btn" type="submit">Save Password</button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeSwitch');
+    const isDarkMode = localStorage.getItem('theme') === 'dark';
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+      themeToggle.checked = true;
+    }
+    themeToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
